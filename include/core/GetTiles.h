@@ -19,14 +19,15 @@ using std::string;
 
 class GetTiles{
 public:
-    GetTiles(double minx, double miny, double maxx, double maxy, int minz, int maxz, string tarPath, string baseUrl) : minx_(minx),
+    GetTiles(double minx, double miny, double maxx, double maxy, int minz, int maxz, string tarPath, string baseUrl, bool isWriteTmpFile) : minx_(minx),
                    miny_(miny),
                    maxx_(maxx),
                    maxy_(maxy),
                    minz_(minz),
                    maxz_(maxz),
                    tarPath_(tarPath),
-                   baseUrl_(baseUrl){}
+                   baseUrl_(baseUrl),
+                   isWriteTmpFile_(isWriteTmpFile){}
     void execute();
 protected:
     void createGenDownloadTilesThread(double minx, double miny, double maxx, double maxy, int minz, int maxz);
@@ -38,6 +39,8 @@ private:
     int minz_, maxz_;
     string tarPath_;
     string baseUrl_;
+    //是否写临时瓦片
+    bool isWriteTmpFile_ = false;
     ConcurrentBlockingQueue<TileInfor> download_queue_;
     ConcurrentBlockingQueue<pair<TileInfor, string>> write_queue_;
 };

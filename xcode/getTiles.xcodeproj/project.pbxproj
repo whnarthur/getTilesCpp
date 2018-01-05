@@ -297,16 +297,19 @@
 					../thirdparty/platform/darwin/opencv/include,
 					../thirdparty/platform/darwin/poco/include,
 					../include,
+					../thirdparty/platform/darwin/libarchive/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					../thirdparty/platform/darwin/opencv/lib,
 					../thirdparty/platform/darwin/poco/lib,
+					../thirdparty/platform/darwin/libarchive/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-lPocoNet",
 					"-lPocoUtil",
 					"-lPocoJSON",
 					"-lPocoFoundation",
+					"-larchive",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -319,16 +322,19 @@
 					../thirdparty/platform/darwin/opencv/include,
 					../thirdparty/platform/darwin/poco/include,
 					../include,
+					../thirdparty/platform/darwin/libarchive/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					../thirdparty/platform/darwin/opencv/lib,
 					../thirdparty/platform/darwin/poco/lib,
+					../thirdparty/platform/darwin/libarchive/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-lPocoNet",
 					"-lPocoUtil",
 					"-lPocoJSON",
 					"-lPocoFoundation",
+					"-larchive",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

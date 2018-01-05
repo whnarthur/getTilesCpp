@@ -112,7 +112,7 @@ void GetTiles::createWrite2TarThread(string tarPath){
     struct archive_entry *entry;
     tarfile = archive_write_new();
     archive_write_set_format_pax_restricted(tarfile);
-    archive_write_open_filename(tarfile, str_out_tar_path.c_str());
+    archive_write_open_filename(tarfile, tarPath.c_str());
     //
     while (true) {
         pair<TileInfor, string> result;
@@ -127,24 +127,30 @@ void GetTiles::createWrite2TarThread(string tarPath){
         int z = tile.getZ();
         int x = tile.getX();
         int y = tile.getY();
-        snprintf(szUrl, 256, "./%d/%d/%d/", z, x/10, y/10);
-//        Poco::File outDir(szUrl);
-//        outDir.createDirectories();
-//        //
-//        snprintf(szUrl, 256, "./%d/%d/%d/%d_%d.png", z, x/10, y/10, x, y);
-//        ofstream fp;
-//        fp.open(szUrl);
-//        fp<<result.second;
-//        fp.close();
         //
+        if(isWriteTmpFile_){
+            snprintf(szUrl, 256, "./%d/%d/%d/", z, x/10, y/10);
+            Poco::File outDir(szUrl);
+            outDir.createDirectories();
+            //
+            snprintf(szUrl, 256, "%d/%d/%d/%d_%d.png", z, x/10, y/10, x, y);
+            ofstream fp;
+            fp.open(szUrl);
+            fp<<result.second;
+            fp.close();
+        }
+        //
+        snprintf(szUrl, 256, "%d/%d/%d/%d_%d.png", z, x/10, y/10, x, y);
+        struct timespec ts;
+        clock_gettime(CLOCK_REALTIME, &ts);
         entry = archive_entry_new();
-        archive_entry_set_pathname(entry, tile_path.c_str());
-        archive_entry_set_size(entry, size_of_str_png);
+        archive_entry_set_pathname(entry, szUrl);
+        archive_entry_set_size(entry, result.second.size());
         archive_entry_set_filetype(entry, AE_IFREG);
         archive_entry_set_mtime(entry, ts.tv_sec, ts.tv_nsec);
         archive_entry_set_perm(entry, 0644);
         archive_write_header(tarfile, entry);
-        archive_write_data(tarfile, str_png.c_str(), size_of_str_png);
+        archive_write_data(tarfile, result.second.c_str(), result.second.size());
         archive_entry_free(entry);
     }
     //
