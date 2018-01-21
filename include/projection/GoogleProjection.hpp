@@ -20,7 +20,6 @@ typedef vector<pdd, pdd > pvdd;
 double minmax_mapnik(double a, double b, double c);
 
 
-
 class GoogleProjection
 {
 public:

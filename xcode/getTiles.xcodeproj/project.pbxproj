@@ -11,6 +11,7 @@
 		6B08F2901FFF163A00F06071 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B08F28F1FFF163A00F06071 /* main.cpp */; };
 		6B08F2931FFF196000F06071 /* GoogleProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B08F2921FFF196000F06071 /* GoogleProjection.cpp */; };
 		6B08F29A1FFF1C8300F06071 /* GetTiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B08F2991FFF1C8300F06071 /* GetTiles.cpp */; };
+		6B3F5EF2200369BD00BD9511 /* CurlUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B3F5EF0200369BD00BD9511 /* CurlUtil.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		6B08F2991FFF1C8300F06071 /* GetTiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetTiles.cpp; path = ../src/core/GetTiles.cpp; sourceTree = "<group>"; };
 		6B08F2A01FFF1EB200F06071 /* TileInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TileInfo.hpp; path = ../include/core/TileInfo.hpp; sourceTree = "<group>"; };
 		6B34A1EE1FFE59F9007F73E2 /* getTiles */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = getTiles; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B3F5EF0200369BD00BD9511 /* CurlUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CurlUtil.cpp; path = ../src/util/CurlUtil.cpp; sourceTree = "<group>"; };
+		6B3F5EF3200369EC00BD9511 /* CurlUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CurlUtil.hpp; path = ../include/util/CurlUtil.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 		6B08F28A1FFF161900F06071 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				6B3F5EF3200369EC00BD9511 /* CurlUtil.hpp */,
 				6B08F28B1FFF162200F06071 /* RequestUtil.h */,
 			);
 			name = util;
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				6B08F28D1FFF163200F06071 /* RequestUtil.cpp */,
+				6B3F5EF0200369BD00BD9511 /* CurlUtil.cpp */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B3F5EF2200369BD00BD9511 /* CurlUtil.cpp in Sources */,
 				6B08F2901FFF163A00F06071 /* main.cpp in Sources */,
 				6B08F28E1FFF163200F06071 /* RequestUtil.cpp in Sources */,
 				6B08F29A1FFF1C8300F06071 /* GetTiles.cpp in Sources */,
@@ -298,11 +304,14 @@
 					../thirdparty/platform/darwin/poco/include,
 					../include,
 					../thirdparty/platform/darwin/libarchive/include,
+					../thirdparty/platform/darwin/curl/include,
+					../thirdparty/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					../thirdparty/platform/darwin/opencv/lib,
 					../thirdparty/platform/darwin/poco/lib,
 					../thirdparty/platform/darwin/libarchive/lib,
+					../thirdparty/platform/darwin/curl/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-lPocoNet",
@@ -310,6 +319,7 @@
 					"-lPocoJSON",
 					"-lPocoFoundation",
 					"-larchive",
+					"-lcurl",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -323,11 +333,14 @@
 					../thirdparty/platform/darwin/poco/include,
 					../include,
 					../thirdparty/platform/darwin/libarchive/include,
+					../thirdparty/platform/darwin/curl/include,
+					../thirdparty/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					../thirdparty/platform/darwin/opencv/lib,
 					../thirdparty/platform/darwin/poco/lib,
 					../thirdparty/platform/darwin/libarchive/lib,
+					../thirdparty/platform/darwin/curl/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-lPocoNet",
@@ -335,6 +348,7 @@
 					"-lPocoJSON",
 					"-lPocoFoundation",
 					"-larchive",
+					"-lcurl",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

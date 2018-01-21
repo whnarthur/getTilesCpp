@@ -19,7 +19,8 @@
 typedef pair<double, double> pdd;
 
 void GetTiles::execute(){
-    unsigned int core_nums = std::thread::hardware_concurrency();
+    unsigned int core_nums = 1;
+//    unsigned int core_nums = std::thread::hardware_concurrency();
     std::thread genDownLoadTiles_thread(&GetTiles::createGenDownloadTilesThread, this, minx_, miny_, maxx_, maxy_, minz_, maxz_);
     //
     std::thread *download_threads = new std::thread[core_nums];

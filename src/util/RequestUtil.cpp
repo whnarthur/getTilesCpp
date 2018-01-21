@@ -270,8 +270,8 @@ bool CServiceRequestUtil::HttpGetBinary(std::string url, char ** result, size_t 
         HTTPResponse response;
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, uri.getPath(), Poco::Net::HTTPMessage::HTTP_1_1);
         //伪造浏览器头
-        request.set("User-Agent","Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)");
-//        request.set("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36");
+//        request.set("User-Agent","Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)");
+        request.set("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36");
 //        request.set("Connection","keep-alive");
 //        request.set("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
         session.sendRequest(request);
@@ -295,6 +295,7 @@ bool CServiceRequestUtil::HttpGetBinary(std::string url, char ** result, size_t 
         }
     } catch (Exception &e) {
         std::cout << e.className() << " : " << e.message() << std::endl;
+        cout<<e.what()<<endl;
         return false;
     }
 
